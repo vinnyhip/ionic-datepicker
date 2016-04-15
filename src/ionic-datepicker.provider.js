@@ -46,6 +46,8 @@ angular.module('ionic-datepicker.provider', [])
         $scope.currentMonth = $scope.mainObj.monthsList[$scope.currentDate.getMonth()];
         $scope.currentYear = $scope.currentDate.getFullYear();
         refreshDateList($scope.currentDate);
+
+        $scope.selctedDateEpoch = new Date($scope.currentDate.getFullYear(), $scope.currentDate.getMonth(), 1);
       };
 
       //Next month
@@ -58,6 +60,8 @@ angular.module('ionic-datepicker.provider', [])
         $scope.currentMonth = $scope.mainObj.monthsList[$scope.currentDate.getMonth()];
         $scope.currentYear = $scope.currentDate.getFullYear();
         refreshDateList($scope.currentDate);
+
+        $scope.selctedDateEpoch = new Date($scope.currentDate.getFullYear(), $scope.currentDate.getMonth(), 1);
       };
 
       //Date selected
@@ -80,6 +84,7 @@ angular.module('ionic-datepicker.provider', [])
         var today = new Date();
         refreshDateList(new Date());
         $scope.selctedDateEpoch = resetHMSM(today).getTime();
+        console.log($scope.selctedDateEpoch);
         if ($scope.mainObj.closeOnSelect) {
           $scope.mainObj.callback($scope.selctedDateEpoch);
           closeModal();
@@ -165,12 +170,16 @@ angular.module('ionic-datepicker.provider', [])
         var monthNumber = $scope.monthsList.indexOf(month);
         $scope.currentDate.setMonth(monthNumber);
         refreshDateList($scope.currentDate);
+
+        $scope.selctedDateEpoch = new Date($scope.currentDate.getFullYear(), $scope.currentDate.getMonth(), 1);
       };
 
       //Year changed
       $scope.yearChanged = function (year) {
         $scope.currentDate.setFullYear(year);
         refreshDateList($scope.currentDate);
+
+        $scope.selctedDateEpoch = new Date($scope.currentDate.getFullYear(), $scope.currentDate.getMonth(), 1);
       };
 
       //Setting up the initial object
