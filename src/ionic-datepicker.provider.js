@@ -268,7 +268,7 @@ angular.module('ionic-datepicker.provider', [])
           $scope.popup = $ionicPopup.show({
             templateUrl: 'ionic-datepicker-popup.html',
             scope: $scope,
-            cssClass: 'ionic_datepicker_popup',
+            cssClass: 'ionic_datepicker_popup ' + $scope.mainObj.customPopupCss,
             buttons: buttons
           });
         } else {
